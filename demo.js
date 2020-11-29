@@ -16,7 +16,7 @@ var config = {
 require.config( {
 	baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources"
 } );
-
+*/
 require( ["js/qlik"], function ( qlik ) {
 	qlik.setOnError( function ( error ) {
 		$( '#popupText' ).append( error.message + "<br>" );
@@ -25,7 +25,7 @@ require( ["js/qlik"], function ( qlik ) {
 	$( "#closePopup" ).click( function () {
 		$( '#popup' ).hide();
 	} );
-*/
+
 var config = {
 	connect();
 
