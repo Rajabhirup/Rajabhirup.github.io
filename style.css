@@ -1,0 +1,43 @@
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 45px 45px 0;
+}
+​
+.qvplaceholder, .qvobject {
+    flex: 1 1 auto;
+    height: 250px;
+    min-width: 400px;
+    margin: 25px 0 0 45px;
+    background-color: #eeeeee;
+}
+​
+h1 {
+    font-family: Arial;
+    font-size: 3em;
+    background-color: #eeeeee;
+    width: 100%;
+}
+​
+​
+#intro {
+    flex: 1 1 auto;
+    height: 250px;
+    min-width: 700px;
+    max-width: 700px;
+    margin: 25px 0 0 45px;
+    background-color: #eeeeee;
+    font-size: 1.5em;
+    font-family: Arial;
+}
+​
+.cases {
+    flex: 1 1 auto;
+    height: 250px;
+    min-width: 400px;
+    max-width: 400px;
+    margin: 25px 0 0 45px;
+    background-color: #eeeeee;
+    font-size: 1.5em;
+    font-family: Arial;
+}
