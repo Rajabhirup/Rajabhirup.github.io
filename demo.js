@@ -3,10 +3,11 @@ var config = {
     host: 'zsdemo.us.qlikcloud.com', //for example, 'abc.us.example.com'
     prefix: '/',
     isSecure: true,
+	port: 443
     webIntegrationId: 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9'
 };
 require.config( {
-    baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + config.prefix + "resources",
+    baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host +  + (config.port ? ":" + config.port : "") + config.prefix + "resources",
     webIntegrationId: config.webIntegrationId
 } );			
 
