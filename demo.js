@@ -3,7 +3,7 @@ var config = {
     host: 'zsdemo.us.qlikcloud.com', //for example, 'abc.us.example.com'
     prefix: '/',
     isSecure: true,
-	port: 443
+	port: 443,
     webIntegrationId: 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9'
 };
 require.config( {
