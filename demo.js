@@ -66,7 +66,7 @@
     // open the app, and fetch the layout:
     const app = await global.openDoc(appId);
     const appLayout = await app.getAppLayout();
-	getObject('Fields','JzPKHF');
+	await app.getObject('Fields','JzPKHF');
 
     // finally, present the app title in your web app:
     titleElement.innerHTML = appLayout.qTitle;
