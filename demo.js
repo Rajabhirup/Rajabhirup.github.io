@@ -1,6 +1,6 @@
 
 var config = {
-    host: 'https://zsdemo.us.qlikcloud.com', //for example, 'abc.us.example.com'
+    host: 'zsdemo.us.qlikcloud.com', //for example, 'abc.us.example.com'
     prefix: '/',
     isSecure: true,
     webIntegrationId: 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9'
