@@ -7,7 +7,7 @@ var config = {
     webIntegrationId: 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9'
 };
 require.config( {
-    baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host +  + (config.port ? ":" + config.port : "") + config.prefix + "resources",
+    baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host +  (config.port ? ":" + config.port : "") + config.prefix + "resources",
     webIntegrationId: config.webIntegrationId
 } );			
 
