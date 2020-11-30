@@ -3,7 +3,7 @@ var config = {
   host: 'https://zsdemo.us.qlikcloud.com/',
   isSecure: true,
   prefix: '/',
-webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9'
+	webIntegrationId: 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9'
 };
 
 
