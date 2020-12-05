@@ -45,8 +45,8 @@
     }
 
     // grab the first app id in the list:
- /*   const appId = apps.data[0].resourceId; */
-	const appId = '711a2873-edb1-400b-a4a3-6012bbd9c705';
+/*   const appId = apps.data[0].resourceId; */
+	const appId = '711a2873-edb1-400b-a4a3-6012bbd9c705'; 
  	
     // build a websocket URL:
     const url = `${tenantUri.replace(
@@ -66,7 +66,7 @@
     // open the app, and fetch the layout:
     const app = await global.openDoc(appId);
     const appLayout = await app.getAppLayout();
-	await app.getObject('Fields','JzPKHF');
+/*	await app.getObject('Fields','JzPKHF'); */
 
     // finally, present the app title in your web app:
     titleElement.innerHTML = appLayout.qTitle;
