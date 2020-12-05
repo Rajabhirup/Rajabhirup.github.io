@@ -1,7 +1,7 @@
 connect();
 
 async function connect() {
-    const urlQlikServer = "https://zsdemo.us.qlikcloud.com/";
+    const urlQlikServer = "https://zsdemo.us.qlikcloud.com";
     const urlLoggedIn = "/api/v1/audits";//Use GET request to see if you are authenticated
     const urlLogin = "/login";
     const webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9';        
