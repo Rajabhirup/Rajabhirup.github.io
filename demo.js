@@ -23,6 +23,6 @@ var app = qlik.openApp( '711a2873-edb1-400b-a4a3-6012bbd9c705', config ); //Repl
     //get objects -- inserted here --	
 	//get objects -- inserted here --                                                 
 app.getObject("Fields","JzPKHF");
-} );	
+
 	
 } );
