@@ -71,7 +71,7 @@ const obj1 = await app.getObject('JzPKHF'); 	/* Added for a object */
 
     // finally, present the app title in your web app:
    titleElement.innerHTML = appLayout.qTitle;
-	objectElement.innerHTML = obj1.qHandle;	  
+	objectElement.innerHTML = obj1.getLayout();	  
   } catch (err) {
     window.console.log('Error while setting up:', err);
   }
