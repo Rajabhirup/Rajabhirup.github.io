@@ -22,8 +22,7 @@ require( ["js/qlik"], function ( qlik ) {
 var app = qlik.openApp( '711a2873-edb1-400b-a4a3-6012bbd9c705', config ); //Replace 'AppId' with the actual helpdesk app ID 
     //get objects -- inserted here --	
 	//get objects -- inserted here --                                                 
-app.visualization.get('JzPKHF').then(function(vis){
-    vis.show("Fields");	
+app.getObject("Fields","JzPKHF");
 } );	
 	
 } );
