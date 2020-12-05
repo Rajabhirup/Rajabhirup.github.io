@@ -1,5 +1,5 @@
 var config = {
-    host: 'https://zsdemo.us.qlikcloud.com', //for example, 'abc.us.example.com'
+    host: 'zsdemo.us.qlikcloud.com', //for example, 'abc.us.example.com'
     prefix: '/',
     port: 443,
     isSecure: true,
