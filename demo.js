@@ -2,6 +2,7 @@
   const tenantUri = 'https://zsdemo.us.qlikcloud.com';
   const webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9';
   const titleElement = document.getElementById('title');
+  const objectElement = document.getElementById('Fields'); /* Added for a object */
 
   async function request(path, returnJson = true) {
     const res = await fetch(`${tenantUri}${path}`, {
@@ -66,17 +67,17 @@
     // open the app, and fetch the layout:
     const app = await global.openDoc(appId);
     const appLayout = await app.getAppLayout();
-/*	await app.getObject('Fields','JzPKHF'); */
+	const obj1 = await app.getObject('JzPKHF'); 	/* Added for a object */
 
     // finally, present the app title in your web app:
     titleElement.innerHTML = appLayout.qTitle;
+	objectElement.innerHTML = obj1;    /* Added for a object */
   } catch (err) {
     window.console.log('Error while setting up:', err);
   }
 })();
 
 /*
-
 var config = {
     host: 'zsdemo.us.qlikcloud.com', //for example, 'abc.us.example.com'
     prefix: '/',
@@ -88,8 +89,6 @@ require.config( {
     baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host +  (config.port ? ":" + config.port : "") + config.prefix + "resources",
     webIntegrationId: config.webIntegrationId
 } );			
-
-
 require( ["js/qlik"], function ( qlik ) {
 	qlik.on( "error", function ( error ) {
 		$( '#popupText' ).append( error.message + "<br>" );
@@ -106,5 +105,4 @@ require( ["js/qlik"], function ( qlik ) {
 		
 } );
 */
-
 
