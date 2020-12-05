@@ -2,7 +2,7 @@
   const tenantUri = 'https://zsdemo.us.qlikcloud.com';
   const webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9';
   const titleElement = document.getElementById('title');
-  const objectElement = document.getElementById('Fields'); /* Added for a object */
+ /* const objectElement = document.getElementById('Fields'); /* Added for a object */
 
   async function request(path, returnJson = true) {
     const res = await fetch(`${tenantUri}${path}`, {
@@ -67,10 +67,10 @@
     // open the app, and fetch the layout:
     const app = await global.openDoc(appId);
     const appLayout = await app.getAppLayout();
-	const obj1 = await app.getObject('JzPKHF'); 	/* Added for a object */
+	const obj1 = await app.getObject(document.getElementById('Fields'),'JzPKHF'); 	/* Added for a object */
 
     // finally, present the app title in your web app:
-    titleElement.innerHTML = appLayout.qTitle;
+  /*  titleElement.innerHTML = appLayout.qTitle; */
 	objectElement.innerHTML = obj1;    /* Added for a object */
   } catch (err) {
     window.console.log('Error while setting up:', err);
