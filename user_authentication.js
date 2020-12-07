@@ -1,30 +1,32 @@
-connect();
+async () => {
+  const tenantUri = 'https://zsdemo.us.qlikcloud.com';
+  const webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9';
 
-async function connect() {
-    const urlQlikServer = "https://zsdemo.us.qlikcloud.com";
-    const urlLoggedIn = "/api/v1/audits";//Use GET request to see if you are authenticated
-    const urlLogin = "/login";
-    const webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9';        
+  async function request(path, returnJson = true) {
+    const res = await fetch(`${tenantUri}${path}`, {
+      mode: 'cors',
+      credentials: 'include',
+      redirect: 'follow',
+      headers: {
+        // web integration is sent as a header:
+        'qlik-web-integration-id': webIntegrationId,
+      },
+    });
+    if (res.status < 200 || res.status >= 400) throw res;
+    return returnJson ? res.json() : res;
+  }
 
-    //Check to see if logged in
-    return await fetch(`${urlQlikServer}${urlLoggedIn}`, {
-        credentials: 'include',
-        headers: {                  
-            'Qlik-Web-Integration-ID':webIntegrationId
-        }
-    })
-    .then(async function(response)
-    {
-        //check if user is authenticated; if not, redirect to login page
-		if(response.status===401){
-            const url = new URL(`${urlQlikServer}/login`);
-            url.searchParams.append('returnto', 'http://localhost:1234/mashup');
-            url.searchParams.append('qlik-web-integration-id', webIntegrationId);
-            window.location.href = url;
-        }	
-    })
-    .catch(function(error)
-    {
-        console.error(error);
-    });	
-}			
+  try {
+    // call your-tenant.us.qlikcloud.com/api/v1/users/me to
+    // retrieve the user metadata, as a way to detect if they
+    // are signed in. An error will be thrown if the response
+    // is a non-2XX HTTP status:
+    const user = await request('/api/v1/users/me');
+    document.getElementById('intro').innerHTML = `Hello, ${user.name}`;
+  } catch (err) {
+    const returnTo = encodeURIComponent(window.location.href);
+    // redirect your user to the tenant log in screen, and once they're
+    // signed in, return to your web app:
+    window.location.href = `${tenantUri}/login?returnto=${returnTo}&qlik-web-integration-id=${webIntegrationId}`;
+  }
+})();
