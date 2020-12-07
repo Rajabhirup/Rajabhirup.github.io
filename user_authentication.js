@@ -22,7 +22,6 @@ async () => {
     // are signed in. An error will be thrown if the response
     // is a non-2XX HTTP status:
     const user = await request('/api/v1/users/me');
-    document.getElementById('intro').innerHTML = `Hello, ${user.name}`;
   } catch (err) {
     const returnTo = encodeURIComponent(window.location.href);
     // redirect your user to the tenant log in screen, and once they're
