@@ -36,7 +36,7 @@
     const csrfToken = res.headers.get('qlik-csrf-token');
 
     // fetch the list of available apps:
-//    const apps = await request('/api/v1/items?resourceType=app');
+ const apps = await request('/api/v1/items?resourceType=app');
 /*
     if (!apps.data.length) {
       titleElement.innerHTML = 'No apps available';
