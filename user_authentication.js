@@ -1,4 +1,4 @@
-async () => {
+(async () => {
   const tenantUri = 'https://zsdemo.us.qlikcloud.com';
   const webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9';
 
@@ -22,10 +22,48 @@ async () => {
     // are signed in. An error will be thrown if the response
     // is a non-2XX HTTP status:
     const user = await request('/api/v1/users/me');
+ //   document.getElementById('intro').innerHTML = `Hello, ${user.name}`;
   } catch (err) {
     const returnTo = encodeURIComponent(window.location.href);
     // redirect your user to the tenant log in screen, and once they're
     // signed in, return to your web app:
     window.location.href = `${tenantUri}/login?returnto=${returnTo}&qlik-web-integration-id=${webIntegrationId}`;
+  }
+
+  try {
+    // fetch the CSRF token:
+    const res = await request('/api/v1/csrf-token', false);
+    const csrfToken = res.headers.get('qlik-csrf-token');
+
+    // fetch the list of available apps:
+//    const apps = await request('/api/v1/items?resourceType=app');
+/*
+    if (!apps.data.length) {
+      titleElement.innerHTML = 'No apps available';
+      return;
+    }
+*/
+
+    // grab the first app id in the list:
+/*   const appId = apps.data[0].resourceId; */
+//	const appId = '711a2873-edb1-400b-a4a3-6012bbd9c705'; 
+ 	
+    // build a websocket URL:
+    const url = `${tenantUri.replace(
+      'https',
+      'wss'
+    )}/app/${appId}?qlik-web-integration-id=${webIntegrationId}&qlik-csrf-token=${csrfToken}`;
+
+    // fetch the engine API schema:
+    const schema = await (
+      await fetch('https://unpkg.com/enigma.js@2.7.0/schemas/12.612.0.json')
+    ).json();
+
+    // create the enigma.js session:
+    const session = window.enigma.create({ url, schema });
+    const global = await session.open();
+
+  } catch (err) {
+    window.console.log('Error while setting up:', err);
   }
 })();
