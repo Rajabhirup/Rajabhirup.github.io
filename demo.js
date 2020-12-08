@@ -32,6 +32,7 @@ require( ["js/qlik"], function ( qlik ) {
 	function GetTotal(reply, app){
 		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
 		  $('#casesString').text(output);
+		$('#casesString_1').text(output);
 	}
 	
     //open apps -- inserted here --
