@@ -39,6 +39,15 @@ app.getObject("Fields","JzPKHF");
 
 app.createCube({
 	"qDimensions" : [{
+		"qDef": {
+				"qSortCriterias": [
+				{
+					"qSortByExpression": -1,
+					"qExpression": {"qv": "=Sum(ERROR_COUNT)"}
+				}
+				]
+			},
+		
 		"qDef" : {
 			"qFieldDefs": ["DQ_Attribute"],
       "qFieldLabels": ["Attributes"]
