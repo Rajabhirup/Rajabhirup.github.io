@@ -18,11 +18,44 @@ require( ["js/qlik"], function ( qlik ) {
 	$( "#closePopup" ).click( function () {
 		$( '#popup' ).hide();
 	} );
+	
+	function GetCases(reply, app){
+		var datalist = "";
+		$.each(reply.qHyperCube.qDataPages[0].qMatrix, function(key, value) {
+		datalist += '<li>' + value[0].qText + ' ' + value[1].qText + '</li>';
+		});
+		$('#casesList').html(datalist);
+	}	
+	
     //open apps -- inserted here --
 var app = qlik.openApp( '711a2873-edb1-400b-a4a3-6012bbd9c705', config ); //Replace 'AppId' with the actual helpdesk app ID 
     //get objects -- inserted here --	
 	//get objects -- inserted here --                                                 
 app.getObject("Fields","JzPKHF");
+
+//create cubes and lists -- inserted here --
+
+app.createCube({
+	"qDimensions" : [{
+		"qDef" : {
+			"qFieldDefs": ["DQ_Attribute"],
+      "qFieldLabels": ["Attributes"]
+			}
+			}
+			],
+	qMeasures : [{
+		qDef : {
+		"qDef": "=Sum(ERROR_COUNT)",
+      "qLabel": "Failed Record Count New"
+			}
+		}],
+	qInitialDataFetch : [{
+		qTop : 0,
+		qLeft : 0,
+		qHeight : 20,
+		qWidth : 3
+			}]
+	}, GetCases);
 
 	
 } );
