@@ -30,11 +30,8 @@ require( ["js/qlik"], function ( qlik ) {
 	}
 	
 	function GetTotal(reply, app){
-		var datastr = "";
-		$.each(reply.qHyperCube.qDataPages[0].qMatrix, function(key, value) {
-		datastr += value[0].qText + ' ' + value[1].qText + ' ';
-		});
-		$('#casesString').html(datastr);
+		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+		  $("#gross1").text(output);
 	}
 	
     //open apps -- inserted here --
@@ -79,7 +76,7 @@ app.createCube({
 	qMeasures : [{
 		qDef : {
 		"qDef": "=Sum(ERROR_COUNT)",
-      "qLabel": "Failed Record Count New"
+     		 "qLabel": "Failed Record Count New"
 			}
 		}]
 	}, GetTotal);
