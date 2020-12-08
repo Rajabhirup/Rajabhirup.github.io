@@ -27,7 +27,15 @@ require( ["js/qlik"], function ( qlik ) {
 		});
 		datatable += '</table>';
 		$('#casesTable').html(datatable);
-	}	
+	}
+	
+	function GetTotal(reply, app){
+		var datastr = "";
+		$.each(reply.qHyperCube.qDataPages[0].qMatrix, function(key, value) {
+		datastr += value[0].qText + ' ' + value[1].qText + ' ';
+		});
+		$('#casesString').html(datastr);
+	}
 	
     //open apps -- inserted here --
 var app = qlik.openApp( '711a2873-edb1-400b-a4a3-6012bbd9c705', config ); //Replace 'AppId' with the actual helpdesk app ID 
@@ -65,6 +73,16 @@ app.createCube({
 		qWidth : 3
 			}]
 	}, GetCases);
+	
+app.createCube({
+	"qDimensions": [],
+	qMeasures : [{
+		qDef : {
+		"qDef": "=Sum(ERROR_COUNT)",
+      "qLabel": "Failed Record Count New"
+			}
+		}]
+	}, GetTotal);
 
 	
 } );
