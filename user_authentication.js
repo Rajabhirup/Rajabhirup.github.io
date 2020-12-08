@@ -1,3 +1,4 @@
+/*
 (async () => {
   const tenantUri = 'https://zsdemo.us.qlikcloud.com';
   const webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9';
@@ -75,3 +76,4 @@ const titleElement = document.getElementById('title');
     window.console.log('Error while setting up:', err);
   }
 })();
+*/
