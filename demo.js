@@ -43,7 +43,7 @@ app.createCube({
 				"qSortCriterias": [
 				{
 					"qSortByExpression": -1,
-					"qExpression": {"qv": "=Sum(ERROR_COUNT)"}
+					"qExpression": {"qv": "Sum(ERROR_COUNT)"}
 				}
 				]
 			},
