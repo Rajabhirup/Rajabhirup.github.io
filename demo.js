@@ -20,11 +20,13 @@ require( ["js/qlik"], function ( qlik ) {
 	} );
 	
 	function GetCases(reply, app){
-		var datalist = "";
+		var datatable = "";
+		datatable += '<table><tr><th>Attributes</th><th>Error Count</th></tr>';
 		$.each(reply.qHyperCube.qDataPages[0].qMatrix, function(key, value) {
-		datalist += '<li>' + value[0].qText + ' ' + value[1].qText + '</li>';
+		datatable += '<tr><td class="deptname">' + value[0].qText + '</td><td class="deptdata">'+ value[1].qText + '</td></tr>';
 		});
-		$('#casesList').html(datalist);
+		datatable += '</table>';
+		$('#casesTable').html(datatable);
 	}	
 	
     //open apps -- inserted here --
