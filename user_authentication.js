@@ -47,8 +47,8 @@ const titleElement = document.getElementById('title');
 
 
     // grab the first app id in the list:
-/*   const appId = apps.data[0].resourceId; */
-	const appId = '711a2873-edb1-400b-a4a3-6012bbd9c705'; 
+ const appId = apps.data[0].resourceId; 
+/*	const appId = '711a2873-edb1-400b-a4a3-6012bbd9c705'; 
  	
     // build a websocket URL:
     const url = `${tenantUri.replace(
