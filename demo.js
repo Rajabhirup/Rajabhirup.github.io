@@ -73,12 +73,16 @@ app.createCube({
 	
 app.createCube({
 	"qDimensions": [],
-	qMeasures : [{
-		qDef : {
+	"qMeasures" : [{
+		"qDef" : {
 		"qDef": "=Sum(ERROR_COUNT)",
-     		 "qLabel": "Failed Record Count New"
+      "qLabel": "Failed Record Count New"
 			}
-		}]
+		}],
+		"qInitialDataFetch": [{
+		"qHeight": 20,
+		"qWidth": 1
+			}]
 	}, GetTotal);
 
 	
