@@ -1,7 +1,8 @@
 (async () => {
   const tenantUri = 'https://zsdemo.us.qlikcloud.com';
   const webIntegrationId = 'TVLol0VNptxE_JBclCwKZuP6f8KAFD_9';
-
+const titleElement = document.getElementById('title');
+	
   async function request(path, returnJson = true) {
     const res = await fetch(`${tenantUri}${path}`, {
       mode: 'cors',
@@ -22,7 +23,7 @@
     // are signed in. An error will be thrown if the response
     // is a non-2XX HTTP status:
     const user = await request('/api/v1/users/me');
- // document.getElementById('intro').innerHTML = `Hello, ${user.name}`;
+ document.getElementById('intro').innerHTML = `Hello, ${user.name}`;
   } catch (err) {
     const returnTo = encodeURIComponent(window.location.href);
     // redirect your user to the tenant log in screen, and once they're
@@ -38,12 +39,12 @@
     // fetch the list of available apps:
  const apps = await request('/api/v1/items?resourceType=app');
 
-/*
+
     if (!apps.data.length) {
       titleElement.innerHTML = 'No apps available';
       return;
     }
-*/
+
 
     // grab the first app id in the list:
 /*   const appId = apps.data[0].resourceId; */
@@ -63,6 +64,12 @@
     // create the enigma.js session:
     const session = window.enigma.create({ url, schema });
     const global = await session.open();
+	  const app = await global.openDoc(appId);
+    const appLayout = await app.getAppLayout();
+
+    // finally, present the app title in your web app:
+    titleElement.innerHTML = appLayout.qTitle;
+	  
 
   } catch (err) {
     window.console.log('Error while setting up:', err);
