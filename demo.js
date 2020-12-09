@@ -75,8 +75,12 @@ app.createCube({
 app.createCube({
 	"qDimensions": [],
 	"qMeasures" : [{
+		"qAttributeExpressions": [{
+      "qExpression": "If(Sum(ERROR_COUNT)>36,RGB(0,255,0),If(Avg(FwHit)<36,RGB(255,0,0)))",
+      "id": "cellBackgroundColor"
+								}],
 		"qDef" : {
-		"qDef": "=Sum(ERROR_COUNT)",
+		"qDef": "Sum(ERROR_COUNT)",
       "qLabel": "Failed Record Count New"
 			}
 		}],
@@ -85,6 +89,7 @@ app.createCube({
 		"qWidth": 1
 			}]
 	}, GetTotal);
+
 
 	
 } );
