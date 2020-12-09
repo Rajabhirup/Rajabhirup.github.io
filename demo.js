@@ -33,6 +33,13 @@ require( ["js/qlik"], function ( qlik ) {
 		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
 		  $('#casesString').text(output);
 		$('#casesString_1').text(output);
+		var content = $('casesString_1').text(output);
+   	 if (content >= 35) {
+        $(this).css("color", "#ff0000");
+    				}
+   	if (content <= 35) {
+        $(this).css("color", "#00f000");
+   			 }
 	}
 	
     //open apps -- inserted here --
