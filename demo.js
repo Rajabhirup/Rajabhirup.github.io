@@ -77,7 +77,7 @@ app.createCube({
 	"qMeasures" : [{
 		"qAttributeExpressions": [{
       "qExpression": "If(Sum(ERROR_COUNT)>36,RGB(0,255,0),If(Avg(FwHit)<36,RGB(255,0,0)))",
-      "id": "cellBackgroundColor"
+      "id": "cellForegroundColor"
 								}],
 		"qDef" : {
 		"qDef": "Sum(ERROR_COUNT)",
