@@ -36,6 +36,17 @@ h1 {
 	font-family: Arial;
 }
 
+#intro2 {
+	flex: 1 1 auto;
+	height: 250px;
+	min-width: 700px;
+	max-width: 700px;
+	margin: 25px 0 0 45px;
+	background-color: #eeeeee;
+	font-size: 1.5em;
+	font-family: Arial;
+}
+
 .cases {
 	flex: 1 1 auto;
 	height: 250px;
