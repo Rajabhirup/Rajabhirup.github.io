@@ -20,6 +20,10 @@ h1 {
 	width: 100%;
 }
 
+.content {
+	color: #FFA500;
+}
+
 
 #intro {
 	flex: 1 1 auto;
