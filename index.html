@@ -30,11 +30,23 @@
 			Three different level of Qlik integration has been been demonstrated in this web page. We will take a look at them one by one.
 		</p>
 	</div>
-	<p style= "font-size: 0.85em; font-family: Open Sans; margin: 100px 0 0 45px; width: 100%"> <B> Direct Object Pull </B> from Qlik Sense Application, in this case Multi KPI Objects </p>
+	<p style= "font-size: 0.85em; font-family: Open Sans; margin: 100px 0 0 45px; width: 100%"> <B> Direct Object Pull </B> from Qlik Sense Application, 
+		in this case Multi KPI Objects </p>
 	<div style= "flex:1 1 auto; height: 150px; width: 35%; margin: 25px 0 0 45px;" id="Call"></div>
 	<div style= "flex:1 1 auto; height: 150px; width: 25%; margin: 25px 0 0 25px;" id="Email"></div>
 	<div style= "flex:1 1 auto; height: 150px; width: 10%; margin: 25px 0 0 25px;" id="SMS"></div>
 	<div style= "flex:1 1 auto; height: 150px; width: 10%; margin: 25px 45px 0 25px;" id="SP"></div>
+	
+	<p style= "font-size: 0.85em; font-family: Open Sans; margin: 60px 0 0 45px; width: 100%"> <B> Iframe Object Pull </B> from Qlik Sense Application, with
+	clear selections provision <B>disabled</B></p>
+	<iframe src="https://zsdemo.us.qlikcloud.com/single/?appid=ad8c3e0d-188e-4695-ba4b-5e761ed6617a&obj=EjJJN&opt=ctxmenu,currsel" 
+	style="border:none;width:100%;height:100%;margin: 25px 45px 0 45px;"></iframe>
+	
+	<p style= "font-size: 0.85em; font-family: Open Sans; margin: 60px 0 0 45px; width: 100%"> <B> Iframe Object Pull </B> from Qlik Sense Application, with
+	clear selections provision <B>enabled </B></p>	
+	<iframe src="https://zsdemo.us.qlikcloud.com/single/?appid=ad8c3e0d-188e-4695-ba4b-5e761ed6617a&sheet=60cb7cb7-ca4a-4399-8735-0536defae382&opt=ctxmenu,
+	currsel&select=clearall" style="border:none;width:100%;height:100%;margin: 25px 45px 0 45px;"></iframe>
+	
 	
 	<div id="casesTable" class="casesT"></div>
 	<div id="intro2">
