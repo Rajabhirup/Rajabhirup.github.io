@@ -19,20 +19,45 @@ require( ["js/qlik"], function ( qlik ) {
 		$( '#popup' ).hide();
 	} );
 	
-	function GetCases(reply, app){
-		var datatable = "";
-		datatable += '<table><tr><th>Attributes</th><th>Error Count</th></tr>';
-		$.each(reply.qHyperCube.qDataPages[0].qMatrix, function(key, value) {
-		datatable += '<tr><td class="deptname">' + value[0].qText + '</td><td class="deptdata">'+ value[1].qText + '</td></tr>';
-		});
-		datatable += '</table>';
-		$('#casesTable').html(datatable);
+
+	function ChannelCount(reply, app){
+		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+		  $('#ChannelCount').text(output);
 	}
 	
-	function GetTotal(reply, app){
+		function ChannelDisplay(reply, app){
 		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
-		  $('#casesString').text(output);
-		$('#casesString_1').text(output);
+		  $('#ChannelDisplay').text(output);
+	}
+	
+		function LatestMonth(reply, app){
+		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+		  $('#LatestMonth').text(output);
+	}
+	
+	function EmailOpen(reply, app){
+		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+		  $('#EmailOpen').text(output);
+	}
+	
+	function SMSDel(reply, app){
+		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+		  $('#SMSDel').text(output);
+	}
+	
+		function SPK(reply, app){
+		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+		  $('#SPK').text(output);
+	}
+	
+		function F2F(reply, app){
+		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+		  $('#F2F').text(output);
+	}
+	
+		function Remote(reply, app){
+		var output = reply.qHyperCube.qDataPages[0].qMatrix[0][0].qText;
+		  $('#Remote').text(output);
 	}
 	
     //open apps -- inserted here --
@@ -47,49 +72,118 @@ app.getObject("SP","VJwmsf"); // SPK
 
 //create cubes and lists -- inserted here --
 
-app.createCube({
-	"qDimensions" : [{
-	
-		"qDef" : {
-			"qSortCriterias": [
-				{
-					"qSortByExpression": -1,
-					"qExpression": {"qv": "Sum(ERROR_COUNT)"}
-				}
-				],
-			"qFieldDefs": ["DQ_Attribute"],
-      "qFieldLabels": ["Attributes"]
-			}
-			}
-			],
-	qMeasures : [{
-		qDef : {
-		"qDef": "=Sum(ERROR_COUNT)",
-      "qLabel": "Failed Record Count New"
-			}
-		}],
-	qInitialDataFetch : [{
-		qTop : 0,
-		qLeft : 0,
-		qHeight : 20,
-		qWidth : 3
-			}]
-	}, GetCases);
-	
+
 app.createCube({
 	"qDimensions": [],
 	"qMeasures" : [{
 		"qDef" : {
-		"qDef": "Sum(ERROR_COUNT)",
-      "qLabel": "Failed Record Count New"
+		"qDef": "Count(distinct Channel)",
+      "qLabel": "Total Channel"
 			}
 		}],
 		"qInitialDataFetch": [{
 		"qHeight": 20,
 		"qWidth": 1
 			}]
-	}, GetTotal);
+	}, ChannelCount);
 
+app.createCube({
+	"qDimensions": [],
+	"qMeasures" : [{
+		"qDef" : {
+		"qDef": "concat(distinct Channel, ', ')",
+      "qLabel": "Channel list"
+			}
+		}],
+		"qInitialDataFetch": [{
+		"qHeight": 20,
+		"qWidth": 1
+			}]
+	}, ChannelDisplay);
+
+app.createCube({
+	"qDimensions": [],
+	"qMeasures" : [{
+		"qDef" : {
+		"qDef": "max({<Source= {'FCA','FHQE','FSMS','FSP'} >}Date(Date#([Calendar Year Month], 'YYYYMM'),'MMM-YYYY'))",
+      "qLabel": "Channel list"
+			}
+		}],
+		"qInitialDataFetch": [{
+		"qHeight": 20,
+		"qWidth": 1
+			}]
+	}, LatestMonth);
+	
+app.createCube({
+	"qDimensions": [],
+	"qMeasures" : [{
+		"qDef" : {
+		"qDef": " count({<Source={'FHQE'}, Action = {'Opened'},[Calendar Year Month] = {$(=max({<Source= {'FCA','FHQE','FSMS','FSP'} >}[Calendar Year Month]))}>} [Source Response ID])",
+      "qLabel": "Email Open"
+			}
+		}],
+		"qInitialDataFetch": [{
+		"qHeight": 20,
+		"qWidth": 1
+			}]
+	}, EmailOpen);
+	
+app.createCube({
+	"qDimensions": [],
+	"qMeasures" : [{
+		"qDef" : {
+		"qDef": "  count({<Source={'FSMS'}, Action = {'Delivered'}, Calendar Year Month] = {$(=max({<Source= {'FCA','FHQE','FSMS','FSP'} >}[Calendar Year Month]))}>} distinct [Source Response ID])",
+      "qLabel": "SMS Del"
+			}
+		}],
+		"qInitialDataFetch": [{
+		"qHeight": 20,
+		"qWidth": 1
+			}]
+	}, SMSDel);
+	
+app.createCube({
+	"qDimensions": [],
+	"qMeasures" : [{
+		"qDef" : {
+		"qDef": "  Sum({<Source={'FSP'}, [Calendar Year Month] = {$(=max({<Source= {'FCA','FHQE','FSMS','FSP'} >}[Calendar Year Month]))}>} PDE)",
+      "qLabel": "Speaker Prg"
+			}
+		}],
+		"qInitialDataFetch": [{
+		"qHeight": 20,
+		"qWidth": 1
+			}]
+	}, SPK);
+	
+app.createCube({
+	"qDimensions": [],
+	"qMeasures" : [{
+		"qDef" : {
+		"qDef": "Sum({<Source={'FCA'}, Action={'Face to Face'},[Calendar Year Month] = {$(=max({<Source= {'FCA','FHQE','FSMS','FSP'} >}[Calendar Year Month]))}>} PDE)",
+      "qLabel": "F2F Calls"
+			}
+		}],
+		"qInitialDataFetch": [{
+		"qHeight": 20,
+		"qWidth": 1
+			}]
+	}, F2F);
+	
+app.createCube({
+	"qDimensions": [],
+	"qMeasures" : [{
+		"qDef" : {
+		"qDef": "Sum({<Source={'FCA'}, Action={'Remote'},[Calendar Year Month] = {$(=max({<Source= {'FCA','FHQE','FSMS','FSP'} >}[Calendar Year Month]))}>} PDE)",
+      "qLabel": "Remote Calls"
+			}
+		}],
+		"qInitialDataFetch": [{
+		"qHeight": 20,
+		"qWidth": 1
+			}]
+	}, Remote);
 
 	
 } );
