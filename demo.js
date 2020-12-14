@@ -133,7 +133,7 @@ app.createCube({
 	"qDimensions": [],
 	"qMeasures" : [{
 		"qDef" : {
-		"qDef": "  count({<Source={'FSMS'}, Action = {'Delivered'}, Calendar Year Month] = {$(=max({<Source= {'FCA','FHQE','FSMS','FSP'} >}[Calendar Year Month]))}>} distinct [Source Response ID])",
+		"qDef": "  count({<Source={'FSMS'}, Action = {'Delivered'}, [Calendar Year Month] = {$(=max({<Source= {'FCA','FHQE','FSMS','FSP'} >}[Calendar Year Month]))}>} distinct [Source Response ID])",
       "qLabel": "SMS Del"
 			}
 		}],
