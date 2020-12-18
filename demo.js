@@ -61,13 +61,13 @@ require( ["js/qlik"], function ( qlik ) {
 	}
 	
     //open apps -- inserted here --
-var app = qlik.openApp( 'ad8c3e0d-188e-4695-ba4b-5e761ed6617a', config ); //Replace 'AppId' with the actual helpdesk app ID 
+var app = qlik.openApp( '9caa11f3-c685-4629-8f76-54bec11f911f', config ); //Replace 'AppId' with the actual helpdesk app ID 
     //get objects -- inserted here --	
 	//get objects -- inserted here --                                                 
-app.getObject("Call","40c9d553-c2be-4843-b48c-95bfad15cbe9"); // Calls
-app.getObject("Email","ymxaBU"); // HQ Email
-app.getObject("SMS","NJpAq"); // SMS
-app.getObject("SP","VJwmsf"); // SPK
+app.getObject("Call","bfb4b3a5-8688-4541-91ef-968fbf44c5ef"); // Calls
+app.getObject("Email","c4abdde5-c864-4774-9400-db4c00de32e6"); // HQ Email
+app.getObject("SMS","ae15fd7b-eef2-4a74-a0cb-32e326dbfd52"); // SMS
+app.getObject("SP","c015e827-e77a-45b2-81ff-cfe3a151260d"); // SPK
 	
 
 //create cubes and lists -- inserted here --
